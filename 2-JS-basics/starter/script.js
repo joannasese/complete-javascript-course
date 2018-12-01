@@ -52,3 +52,29 @@ if (isMarried) {
 } else {
   console.log(`${firstName} is not boo'ed up.`)
 }
+
+var firstName = 'John';
+var age = 16;
+
+// ternary
+age >= 18 ? console.log(`${firstName} is legal.`)
+: console.log(`${firstName} is a child`);
+
+var drink = age >= 17 ? 'beer' : 'juice';
+console.log(drink)
+
+// switch statement
+var job = 'banana';
+switch (job) {
+  case 'teacher':
+    console.log(`${firstName} is a teacher.`);
+    break;
+  case 'driver':
+    console.log(`${firstName} is a driver.`);
+    break;
+  case 'fruitsnack':
+    console.log(`${firstName} is a fruitsnack.`);
+    break;
+  default:
+    console.log(`${firstName} does something else.`)
+}
