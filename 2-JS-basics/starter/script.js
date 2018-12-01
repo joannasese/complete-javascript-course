@@ -12,4 +12,6 @@ var job, isMarried;
 job = 'teacher';
 isMarried = false;
 
-alert(`${firstName} is a bum!`)
+// alert(`${firstName} is a bum!`);
+var bum = prompt(`${firstName} is a bum, don't you think?`);
+console.log(bum);
