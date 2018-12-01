@@ -33,3 +33,22 @@ var markHigherThanJohn = markBMI > johnBMI;
 console.log(`Is Mark's BMI higher than John's?
 ${markHigherThanJohn}. It is ${markBMI} while
 John's is ${johnBMI}.`);
+
+
+
+// IF/ELSE STATEMENTS
+var firstName = 'John';
+var civilStatus = 'single';
+
+if (civilStatus === 'married') {
+  console.log(`${firstName} is married!`)
+} else {
+  console.log(`${firstName} is ${civilStatus}.`)
+}
+
+var isMarried = false;
+if (isMarried) {
+  console.log(`${firstName} is married.`)
+} else {
+  console.log(`${firstName} is not boo'ed up.`)
+}
