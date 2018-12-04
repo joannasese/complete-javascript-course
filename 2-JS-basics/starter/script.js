@@ -114,3 +114,56 @@ if (teamJohn > teamMike && teamJohn > teamMary){
 } else {
   console.log('It\'s a tie!')
 }
+
+// FUNCTIONS
+// function calculateAge(birthYear){
+//   return 2018 - birthYear;
+// }
+
+calculateAge = (birthYear) => {
+  return 2018 - birthYear;
+}
+
+var age = calculateAge(1986);
+console.log(age);
+
+retirementYear = (year, firstName) => {
+  var age = calculateAge(year);
+  var retirement = 65 - age;
+  console.log(`${firstName} retires in ${retirement} years.`);
+}
+
+retirementYear(1986, 'Joanna');
+
+// Function Statements and Expressions
+// Function Declaration
+function work(job, firstName) {
+
+}
+// Function Expression
+var work = function(job, firstName) {
+  switch(job) {
+    case 'teacher':
+      return `${firstName} teaches.`
+    case 'driver':
+      return `${firstName} drives`
+    case 'designer':
+      return `${firstName} designs`
+    default:
+      return `Whatever.`
+  }
+}
+
+console.log(work('pie', 'Coola'))
+
+// Arrays
+var names = ['Jen', 'Ro', 'Jo'];
+var years = new Array(1989, 1988, 1986);
+
+// Mutate Array
+names[1] = 'Jess';
+
+console.log(names);
+console.log(names.length);
+names[names.length] = 'Homes';
+console.log(names);
