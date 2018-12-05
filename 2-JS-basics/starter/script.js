@@ -288,11 +288,12 @@ var allBills = {
       allTips.push(tip);
       paidBills.push(tippedBill);
     }
-    console.log(`All Tips: ${allTips}`);
-    console.log(`All Bills \+ tip: ${paidBills}`);
+    // console.log(`All Tips: ${allTips}`);
+    // console.log(`All Bills \+ tip: ${paidBills}`);
     console.log(allTips);
     console.log(paidBills);
   }
 };
 
-allBills.tips()
+allBills.tips();
+console.log(allBills);

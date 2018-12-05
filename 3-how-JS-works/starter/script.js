@@ -1,5 +1,38 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
+calculateAge = (year) => {
+  console.log(2018 - year);
+}
+
+// hoisting only works with function declarations,
+// not function expressions
+
+calculateAge(1986); // this works
+
+// function declaration
+function calculateAge(year) {
+  console.log(2018-year);
+}
+
+// retirement(1986); // does not work
+
+//function expression
+var retirement = function(year) {
+  console.log('whatever');
+}
+
+// variables
+// console.log(age);
+let age = 32;
+
+function foo(){
+  let age = 64;
+  console.log(age);
+}
+
+foo();
+console.log(age);
+
 
 
 
@@ -23,7 +56,7 @@
 
 // First scoping example
 
-/*
+// /*
 var a = 'Hello!';
 first();
 
@@ -36,7 +69,7 @@ function first() {
         console.log(a + b + c);
     }
 }
-*/
+// */
 
 
 
@@ -66,12 +99,3 @@ function third() {
 
 ///////////////////////////////////////
 // Lecture: The this keyword
-
-
-
-
-
-
-
-
-
