@@ -267,3 +267,32 @@ var john = ['John', 'Smith', 1990, 'designer', false];
 for (var i = john.length-1; i >= 0; i--){
   console.log(john[i]);
 }
+
+// CODE CHALLENGE #5
+var allBills = {
+  bills: [124, 48, 268, 180, 42],
+  tips: function(){
+    var allTips = [];
+    var paidBills = [];
+
+    for (var i = 0; i < this.bills.length; i++){
+      var bill = this.bills[i];
+      if (bill < 50){
+        var tip = parseInt((bill*.20).toFixed(2));
+      } else if (bill >= 50 && bill <= 200){
+        var tip = parseInt((bill*.15).toFixed(2));
+      } else {
+        var tip = parseInt((bill*.10).toFixed(2));
+      }
+      var tippedBill = bill + tip;
+      allTips.push(tip);
+      paidBills.push(tippedBill);
+    }
+    console.log(`All Tips: ${allTips}`);
+    console.log(`All Bills \+ tip: ${paidBills}`);
+    console.log(allTips);
+    console.log(paidBills);
+  }
+};
+
+allBills.tips()
