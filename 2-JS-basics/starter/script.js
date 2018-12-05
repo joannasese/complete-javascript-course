@@ -232,6 +232,38 @@ if (mark.calcBmi() > john.calcBmi()){
 }
 
 // LOOPS
+// for loops
 for (let i = 0; i < 10; i++){
-  
+  console.log(i);
+}
+
+var john = ['John', 'Smith', 1999, 'child'];
+for (var i = 0; i < john.length; i++){
+  console.log(john[i]);
+}
+
+// while loops
+var i = 0;
+while(i < john.length){
+  console.log(john[i]);
+  i++;
+}
+
+// continue and break statements
+// print strings only
+var john = ['John', 'Smith', 1990, 'designer', false];
+for (let i = 0; i < john.length; i++){
+  if (typeof john[i] !== 'string') continue;
+  console.log(john[i]);
+}
+// loop breaks when it hits a non-string
+for (let i = 0; i < john.length; i++){
+  if (typeof john[i] !== 'string') break;
+  console.log(john[i]);
+}
+
+// looping backwards
+var john = ['John', 'Smith', 1990, 'designer', false];
+for (var i = john.length-1; i >= 0; i--){
+  console.log(john[i]);
 }
