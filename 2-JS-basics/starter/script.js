@@ -167,3 +167,71 @@ console.log(names);
 console.log(names.length);
 names[names.length] = 'Homes';
 console.log(names);
+
+// Objects
+// object literal
+var john = {
+  firstName: 'John',
+  lastName: 'Mulaney',
+  age: 48,
+  family: ['Judy', 'James', 'Phiefel'],
+  job: 'teacher'
+};
+console.log('john\'s age: '+ john.age);
+console.log(`john's family: ${john['family']}`)
+
+var jane = new Object();
+console.log(jane);
+jane.firstName = 'Jane';
+jane.birthYear = 1967;
+// console.log(jane['firstName']);
+// console.log(jane.birthYear);
+
+console.log(john)
+var john = {
+  firstName: 'John',
+  lastName: 'Mulaney',
+  birthYear: 1979,
+  family: ['Judy', 'James', 'Phiefel'],
+  job: 'teacher',
+  calcAge: function() {
+    this.age =  2018 - this.birthYear;
+  }
+};
+
+john.calcAge();
+console.log(john)
+
+// CODING CHALLANGE 4
+var mark = {
+  fullName: 'Mark Mark',
+  mass: 768798,
+  height: 43,
+  calcBmi: function() {
+    this.bmi = this.mass / Math.pow(this.height, 2);
+    return this.bmi;
+  }
+};
+
+var john = {
+  fullName: 'John John',
+  mass: 78,
+  height: 232,
+  calcBmi: function() {
+    this.bmi = this.mass / Math.pow(this.height, 2);
+    return this.bmi;
+  }
+}
+
+if (mark.calcBmi() > john.calcBmi()){
+  console.log('mark is bigger');
+} else if (john.calcBmi() > mark.calcBmi()){
+  console.log('john is bigger');
+} else {
+  console.log('they\'re both the same.');
+}
+
+// LOOPS
+for (let i = 0; i < 10; i++){
+  
+}
