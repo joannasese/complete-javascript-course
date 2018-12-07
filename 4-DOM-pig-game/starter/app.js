@@ -35,11 +35,23 @@ btn = () => {
     // add score
     roundScore += dice;
     document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
-    document.querySelector(`#current-${activePlayer}`).innerHTML = `<em>${dice}</em>`;
-
   } else {
     // next player
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+
+    // resets current score to 0
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+    // bolds current player
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    // hides dice when player toggles
+    document.querySelector('.dice').style.display = 'none';
   }
 }
+btn();
 
 document.querySelector('.btn-roll').addEventListener('click', btn); // pass action and callback function
