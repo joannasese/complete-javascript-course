@@ -13,13 +13,13 @@ let scores  = [0,0];
 let roundScore = 0;
 let activePlayer = 0;
 
-// lets us select elements by css element
-// document.querySelector(`#current-${activePlayer}`).textContent = dice;
-// innerHTML must be a string
-// document.querySelector(`#current-${activePlayer}`).innerHTML = `<em>${dice}</em>`;
-
-// hide dice
+// initially hide dice
 document.querySelector('.dice').style.display = 'none';
+// set initial values to 0
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
 
 // select dice roll event
 btn = () => {
@@ -27,9 +27,19 @@ btn = () => {
   let dice = Math.floor(Math.random() * 6) + 1;
   // 2. Display result
   let diceDOM = document.querySelector('.dice')
+  // show dice
   diceDOM.style.display = 'block';
   diceDOM.src = `dice-${dice}.png`;
   // 3. Update the round score IF result !== 1
+  if (dice !== 1){
+    // add score
+    roundScore += dice;
+    document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
+    document.querySelector(`#current-${activePlayer}`).innerHTML = `<em>${dice}</em>`;
+
+  } else {
+    // next player
+  }
 }
 
 document.querySelector('.btn-roll').addEventListener('click', btn); // pass action and callback function
