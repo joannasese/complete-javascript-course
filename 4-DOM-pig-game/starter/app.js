@@ -9,9 +9,7 @@ GAME RULES:
 
 */
 
-let scores  = [0,0];
-let roundScore = 0;
-let activePlayer = 0;
+init();
 
 // initially hide dice
 document.querySelector('.dice').style.display = 'none';
@@ -76,4 +74,15 @@ function nextPlayer(){
 
   // hides dice when player toggles
   document.querySelector('.dice').style.display = 'none';
+}
+
+// New game
+document.querySelector('.btn-new').addEventListener('click', function(){
+  init();
+})
+
+function init(){
+  scores = [0,0];
+  activePlayer = 0;
+  roundScore = 0;
 }
