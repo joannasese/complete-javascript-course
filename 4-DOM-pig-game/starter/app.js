@@ -32,7 +32,7 @@ btn = () => {
     }
   }
 }
-btn();
+// btn();
 
 document.querySelector('.btn-roll').addEventListener('click', btn); // pass action and callback function
 document.querySelector('.btn-hold').addEventListener('click', function(){
