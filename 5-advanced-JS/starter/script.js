@@ -11,8 +11,39 @@
 
 // Function constructor
 
-var joanna = {
-  name: 'Joanna';
-  yearOfBirth: 1986;
-  job: 'Panda';
+// var joanna = {
+//   name: 'Joanna';
+//   yearOfBirth: 1986;
+//   job: 'Panda';
+// };
+
+// function constructors being with capital letter
+var Person = function(name, yearOfBirth, job){
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+  // this.calculateAge = function() {
+  //   console.log(2018-this.yearOfBirth);
+  // }
 };
+
+// prototype property allows for
+// method is not in constructor but can still be used
+// bc it's in the prototype property of the function constructor
+Person.prototype.calculateAge =
+function() {
+  console.log(2018-this.yearOfBirth);
+}
+Person.prototype.lastName = 'Jambalaya';
+// use function constructor to create object
+// called 'instantiation'
+// 1. first, new operator creates an empty object
+// 2. function is called
+var joanna = new Person('Joanna', 1986, 'panda');
+var lucy = new Person('Lucy', 1678, 'dead');
+var kim = new Person('Kim', 1243, 'ancient');
+
+joanna.calculateAge();
+lucy.calculateAge();
+kim.calculateAge();
+console.log(joanna.lastName);
