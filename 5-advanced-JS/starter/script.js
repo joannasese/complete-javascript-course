@@ -201,3 +201,42 @@ function interviewQuestion(job){
   }
 }
 interviewQuestion('teacher')('Joanna');
+
+// LECTURE 69: Bind, call and apply
+var john = {
+  name: 'John',
+  age: 87,
+  job: 'retired',
+  presentation: function(style, timeOfDay){
+    if (style === 'formal'){
+      console.log(`Good grief. ${this.name} is super fancy in the ${timeOfDay}.`)
+    } else if (style === 'casual'){
+      console.log(`Sick. ${this.name} is super casual in the ${timeOfDay}.`)
+    } else {
+      console.log(`I guess ${this.name} does whatever he wants in the ${timeOfDay}.`)
+    }
+  }
+}
+
+var emily = {
+  name: 'Emily',
+  age: 35,
+  job: 'designer'
+};
+
+var mumford = {
+  name: 'Mumford',
+  age: 37,
+  job: 'writer'
+};
+
+john.presentation('formal', 'mornings');
+// method borrowing below
+john.presentation.call(emily, 'casual', 'afternoons');
+// apply is similar to call except that it accepts arrays
+john.presentation.apply(mumford, ['dapper', 'afternoons']);
+
+// bind
+var johnFriend = john.presentation.bind(john, 'friendly')
+johnFriend('mornings');
+johnFriend('evenings');
