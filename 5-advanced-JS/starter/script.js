@@ -161,3 +161,18 @@ var designerQuestion = interviewQuestion('designer');
 console.log(designerQuestion('Judy'));
 
 interviewQuestion('teacher')('Natalie');
+
+// LECTURE 67: Immediately invoked function expressions (IIFE)
+function game(){
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+game();
+
+// iife
+(function (){
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
+
+// LECTURE 68: Closures
