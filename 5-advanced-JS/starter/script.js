@@ -176,3 +176,28 @@ game();
 })();
 
 // LECTURE 68: Closures
+function retirement(retirementAge){
+  var a = ' years left until retirement.'
+  return function(yearOfBirth){
+    var age = 2018 - yearOfBirth;
+    console.log((retirementAge - age) + a);
+  }
+}
+
+var retirementUS = retirement(66);
+retirementUS(1986);
+//retirement(66)(1986);
+
+// re-write function from lecture 66 using closures
+function interviewQuestion(job){
+  return function(name){
+    if (job === 'designer'){
+      console.log(`${name}, what is UX?`);
+    } else if (job === 'teacher'){
+        console.log(`${name}, what subject do you teach?`);
+    } else {
+        console.log(`${name}, what do you do?`);
+    }
+  }
+}
+interviewQuestion('teacher')('Joanna');
