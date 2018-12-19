@@ -49,6 +49,7 @@
 // console.log(joanna.lastName);
 
 // LECTURE 63: Creating Objects with object.create
+/*
 var personProto = {
   calculateAge: function() {
     console.log(2018-this.yearOfBirth)
@@ -66,3 +67,97 @@ var jim = Object.create(personProto,
   yearOfBirth: {value: 1374},
   job: {value: 'designer'}
 });
+*/
+
+// PRIMITIVES VS OBJECTS
+// numbers, strings, booleans, undefined, and null are primitives
+// everything else are objects
+// primitives hold data in the variable itself
+
+// primitives
+var a = 23;
+var b = a;
+a = 46;
+console.log(a); //46
+console.log(b); //23
+
+// objects
+var obj1 = {
+  name: 'Joanna',
+  age: 32
+};
+var obj2 = obj1;
+obj1.age = 43;
+console.log(obj1.age); //43
+console.log(obj2.age); //43
+
+// functions
+var age = 27;
+var obj = {
+  name: 'Mikel',
+  city: 'Beirut'
+};
+
+function change(a,b) {
+  a = 30;
+  b.city = 'Marrakesh';
+}
+
+change(age, obj);
+console.log(age); //27
+console.log(obj.city); //Marrakesh
+// primitive remains unchanged
+// object changes
+
+// LECTURE 65: First Class Functions
+var years = [1864, 1783, 1874, 1287, 2015];
+
+function arrayCalc(arr, fn){
+  var arrRes = [];
+  for (let i = 0; i < arr.length; i++){
+    arrRes.push(fn(arr[i]));
+  }
+  return arrRes;
+}
+
+// callback function
+function calculateAge(el){
+  return 2018-el;
+}
+
+function legalAge(el){
+  return el >= 21;
+}
+
+var ages = arrayCalc(years, calculateAge);
+// note that we don't call the function here, we just pass in the function variable
+// because we want the function to run later on
+var legalAges = arrayCalc(ages, legalAge);
+console.log(ages);
+console.log(legalAges);
+
+// LECTURE 66: Functions Returning Functions
+function interviewQuestion(job){
+  if (job === 'designer'){
+    // return anonymous function
+    return function(name){
+      console.log(`${name}, what is UX?`);
+    }
+  } else if (job === 'teacher'){
+    return function(name){
+      console.log(`${name}, what subject do you teach?`);
+    }
+  } else {
+    return function(name){
+      console.log(`${name}, what do you do?`);
+    }
+  }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+console.log(teacherQuestion('Jim'));
+
+var designerQuestion = interviewQuestion('designer');
+console.log(designerQuestion('Judy'));
+
+interviewQuestion('teacher')('Natalie');
