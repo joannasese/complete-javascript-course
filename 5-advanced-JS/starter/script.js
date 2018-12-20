@@ -491,7 +491,6 @@ function nextQuestion(){
     questions[randomQuestion].checkAnswer(parseInt(answer), keepScore);
     nextQuestion();
   }
-
 }
 
 nextQuestion();
