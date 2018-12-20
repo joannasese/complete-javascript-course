@@ -1,52 +1,52 @@
-// // LECTURE 61: Inheritance in JS: Prototypes and prototype chains
-//
-// // Every object has a prototype property, which makes inheritance possible in js
-// // The prototype property of an object is where we put methods and properties that we want other objects to inherit
-// // The Constructor's prototype property is NOT the prototype of the Constructor,
-// // it's the prototype of all instances that are created through it
-// // When a certain method (or property) is called, the search starts in the object itself,
-// // and if it cannot be found, the search moves to the object's prototype.
-// // The search continues until the method is found.
-// // This is the protoype chain.
-//
-// // Function constructor
-//
-// // var joanna = {
-// //   name: 'Joanna';
-// //   yearOfBirth: 1986;
-// //   job: 'Panda';
-// // };
-//
-// // function constructors being with capital letter
-// var Person = function(name, yearOfBirth, job){
-//   this.name = name;
-//   this.yearOfBirth = yearOfBirth;
-//   this.job = job;
-//   // this.calculateAge = function() {
-//   //   console.log(2018-this.yearOfBirth);
-//   // }
+// LECTURE 61: Inheritance in JS: Prototypes and prototype chains
+
+// Every object has a prototype property, which makes inheritance possible in js
+// The prototype property of an object is where we put methods and properties that we want other objects to inherit
+// The Constructor's prototype property is NOT the prototype of the Constructor,
+// it's the prototype of all instances that are created through it
+// When a certain method (or property) is called, the search starts in the object itself,
+// and if it cannot be found, the search moves to the object's prototype.
+// The search continues until the method is found.
+// This is the protoype chain.
+
+// Function constructor
+
+// var joanna = {
+//   name: 'Joanna';
+//   yearOfBirth: 1986;
+//   job: 'Panda';
 // };
-//
-// // prototype property allows for
-// // method is not in constructor but can still be used
-// // bc it's in the prototype property of the function constructor
-// Person.prototype.calculateAge =
-// function() {
-//   console.log(2018-this.yearOfBirth);
-// }
-// Person.prototype.lastName = 'Jambalaya';
-// // use function constructor to create object
-// // called 'instantiation'
-// // 1. first, new operator creates an empty object
-// // 2. function is called
-// var joanna = new Person('Joanna', 1986, 'panda');
-// var lucy = new Person('Lucy', 1678, 'dead');
-// var kim = new Person('Kim', 1243, 'ancient');
-//
-// joanna.calculateAge();
-// lucy.calculateAge();
-// kim.calculateAge();
-// console.log(joanna.lastName);
+
+// function constructors being with capital letter
+var Person = function(name, yearOfBirth, job){
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+  // this.calculateAge = function() {
+  //   console.log(2018-this.yearOfBirth);
+  // }
+};
+
+// prototype property allows for
+// method is not in constructor but can still be used
+// bc it's in the prototype property of the function constructor
+Person.prototype.calculateAge =
+function() {
+  console.log(2018-this.yearOfBirth);
+}
+Person.prototype.lastName = 'Jambalaya';
+// use function constructor to create object
+// called 'instantiation'
+// 1. first, new operator creates an empty object
+// 2. function is called
+var joanna = new Person('Joanna', 1986, 'panda');
+var lucy = new Person('Lucy', 1678, 'dead');
+var kim = new Person('Kim', 1243, 'ancient');
+
+joanna.calculateAge();
+lucy.calculateAge();
+kim.calculateAge();
+console.log(joanna.lastName);
 
 // LECTURE 63: Creating Objects with object.create
 /*
@@ -240,3 +240,164 @@ john.presentation.apply(mumford, ['dapper', 'afternoons']);
 var johnFriend = john.presentation.bind(john, 'friendly')
 johnFriend('mornings');
 johnFriend('evenings');
+
+
+
+
+var years = [1864, 1783, 1874, 1287, 2015];
+
+function arrayCalc(arr, fn){
+  var arrRes = [];
+  for (let i = 0; i < arr.length; i++){
+    arrRes.push(fn(arr[i]));
+  }
+  return arrRes;
+}
+
+function calculateAge(el){
+  return 2018-el;
+}
+
+function legalAge(limit, el){
+  return el >= limit;
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullJapan = arrayCalc(ages, legalAge.bind(this, 20));
+console.log(fullJapan);
+
+// LECTURE 70 Coding Challenge
+/////////////////////////////
+// CODING CHALLENGE
+
+
+/*
+--- Let's build a fun quiz game in the console! ---
+
+1. Build a function constructor called Question to describe a question. A question should include:
+a) question itself
+b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
+c) correct answer (I would use a number for this)
+
+2. Create a couple of questions using the constructor
+
+3. Store them all inside an array
+
+4. Select one random question and log it on the console, together with the possible answers (each question should have a number) (Hint: write a method for the Question objects for this task).
+
+5. Use the 'prompt' function to ask the user for the correct answer. The user should input the number of the correct answer such as you displayed it on Task 4.
+
+6. Check if the answer is correct and print to the console whether the answer is correct ot nor (Hint: write another method for this).
+
+7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
+*/
+
+// var Question = function(){
+//   var questions = [
+//     'What color are piglets?',
+//     'Is tape sticky?',
+//     'Is water wet?'
+//   ]
+//   var correctAnswer;
+//
+//   function getAnswer(el){
+//     if (el === correctAnswer){
+//       addScore()
+//     } else {
+//       console.log('Wrong answer. Try again.');
+//     }
+//   }
+//
+//   var score = 0;
+//   function addScore(){
+//     score++
+//     console.log('Correct Answer!')
+//     console.log(`Your current score is: ${score}`)
+//   }
+//
+//   var answer = parseInt(prompt('Type in your answer.'));
+//
+//
+//   // var question = (Math.floor(Math.random() * questions.length));
+// var question = 0;
+//   if (question === 0){
+//     console.log(questions[0]);
+//     console.log('0: Pink');
+//     console.log('1: Blue');
+//     console.log('2: Chartreuse');
+//     correctAnswer = 0;
+//     // var answer = parseInt(prompt('Type in your answer.'));
+//
+//     getAnswer(answer)
+//   } else if (question === 1){
+//     console.log(questions[1]);
+//     console.log('0: Yes');
+//     console.log('1: No');
+//     console.log('2: Maybe');
+//   } else {
+//     console.log(questions[2]);
+//     console.log('0: Definitely');
+//     console.log('1: Let me check');
+//   }
+//
+// }
+//
+// Question();
+
+
+(function (){ //iife
+// function constructor
+function Question(question, answers, correct){
+  this.question = question;
+  this.answers = answers;
+  this.correct = correct;
+}
+
+var answer;
+
+Question.prototype.displayQuestion =
+  function(){
+    console.log(this.question);
+
+    for (var i = 0; i < this.answers.length; i++){
+      console.log(`${i}: ${this.answers[i]}`)
+    }
+  }
+
+Question.prototype.checkAnswer =
+  function(el){
+    if (el === this.correct){
+      console.log('Yea you right.')
+    } else {
+      console.log('Sorry try again.')
+    }
+  }
+
+var q1 = new Question(
+  'What color are piglets?',
+  ['Pink', 'Blue', 'Chartreuse'],
+  0
+);
+
+var q2 = new Question(
+  'Is water wet?',
+  ['Yes', 'No', 'Maybe'],
+  0
+);
+
+var q3 = new Question(
+  'Why is there glitter everywhere?',
+  ['Because why not?', 'I don\'t know what you\'re talking about.', 'I don\'t know but I love it.'],
+  2
+);
+
+var questions = [q1, q2, q3];
+var randomQuestion = (Math.floor(Math.random() * questions.length));
+
+
+questions[randomQuestion].displayQuestion();
+
+var answer = parseInt(prompt('Type in your answer.'));
+
+questions[randomQuestion].checkAnswer(answer);
+})();
