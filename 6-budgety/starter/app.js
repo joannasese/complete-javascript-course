@@ -1,30 +1,33 @@
 // iife allows data privacy
-// module 1
+// BUDGET CONTROLLER
 var budgetController = (function() {
-  var x = 23;
-  var add = function(a){
-    return x + a;
-  }
-
-  return {
-    publicTest: function(b){
-      return add(b);
-    }
-  }
+  // some code
 }());
 
-// module 2
+// UI CONTROLLER
 var uiController = (function() {
   // some code
 }());
 
-// module 3
+// GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, uiCtrl) {
-  // pass other two modules into this controller
-  var z = budgetCtrl.publicTest(5);
-  return {
-    anotherPublic: function(){
-      console.log(z);
-    }
+
+  var ctrlAddItem = function(){
+    console.log('hi')
+    // 1. Get the field input data
+    // 2. Add the item to the budget controller
+    // 3. Add the item to the UI
+    // 4. Calculate the budget
+    // 5. Display the budget on the UI
   }
-}(budgetController, uiController));
+  // pass other two modules into this controller
+  document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+  // allows input data submission with 'enter'
+  document.addEventListener('keypress', function(event){
+    var key = event.which || event.keyCode;
+    if (key === 13){
+      ctrlAddItem();
+    }
+  });
+
+})(budgetController, uiController);
